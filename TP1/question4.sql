@@ -1,8 +1,10 @@
 CREATE OR REPLACE TRIGGER MajNbEmployes
 
-After DELETE or UPDATE or INSERT of emploi on DRH
+After DELETE or INSERT or UPDATE of emploi on DRH
 
-FOR EACH ROW BEGIN
+FOR EACH ROW
+
+BEGIN
 
   If INSERTING Then
   
@@ -45,7 +47,9 @@ FOR EACH ROW BEGIN
     end if;
     
   end if;
-
+  
+--  EXCEPTION
+--  when others then DBMS_OUTPUT.PUT_LINE('Fausse alerte');
 end MajNbEmployes;
-
+/
   

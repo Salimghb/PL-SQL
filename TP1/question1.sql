@@ -25,6 +25,9 @@ CREATE TABLE Drh (
 );
 
 
+-- -----------------------------------------------------------------------------
+--       INSERT : Drh
+-- -----------------------------------------------------------------------------
 
 INSERT INTO Drh VALUES
 	(5147,'BASILE',5344,'FORMATEUR',to_date('23/01/85','DD/MM/YY'),1300,190,1);
@@ -55,7 +58,9 @@ INSERT INTO Drh VALUES
 INSERT INTO Drh VALUES
 	(5712,'MARIUS',5566,'ADMINISTRATIF',to_date('17/09/82','DD/MM/YY'),800,NULL,4);
 
-
+-- -----------------------------------------------------------------------------
+--       INSERT : Serv
+-- -----------------------------------------------------------------------------
 INSERT INTO Serv VALUES
 	(1,'INFORMATIQUE','BAT 688');
 INSERT INTO Serv VALUES
@@ -66,7 +71,7 @@ INSERT INTO Serv VALUES
 	(4,'ADMINISTRATION','BAT 607');
 
 -- -----------------------------------------------------------------------------
---       CREATION DES REFERENCES DE TABLE
+--       Références de tables
 -- -----------------------------------------------------------------------------
 
 ALTER TABLE Drh ADD (
@@ -79,6 +84,10 @@ ALTER TABLE Drh ADD (
           FOREIGN KEY (numServ)
                 REFERENCES SERV (numServ))   ;
 
+-- -----------------------------------------------------------------------------
+--       Tris et Tests
+-- -----------------------------------------------------------------------------
+
 DESC Serv
 
 SELECT * FROM Serv;
@@ -87,10 +96,15 @@ DESC Drh
 
 SELECT * FROM Drh;
 
+
+-- -----------------------------------------------------------------------------
+--       Test références de tables
+-- -----------------------------------------------------------------------------
+
 Select TABLE_NAME, substr(COLUMN_NAME,1,30), CONSTRAINT_NAME
 From  USER_CONS_COLUMNS
 Where CONSTRAINT_NAME NOT LIKE 'SYS%'
-And   TABLE_NAME In ('SERV','DRH')
+And TABLE_NAME In ('SERV','DRH')
 Order By 1, 2, 3;
 
 

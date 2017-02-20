@@ -4,7 +4,7 @@
  
   UPDATE 
     SERV 
-  SET 
+  SET
     nbpers = NbEmploye(numServ),
     nbform = NbFormateur(numServ);
 
